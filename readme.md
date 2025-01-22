@@ -1,4 +1,30 @@
-# Set up projekcts
+# Set up
+
+BE:
+
+```jsx
+builder.Services.AddDbContext <
+	AppDbContext >
+	((o) => o.UseSqlServer(builder.Configuration.GetConnectionString("default")));
+builder.Services.AddCors((opt) => {
+	opt.AddPolicy("AllowAllOrigins", (builder) => {
+		builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+	});
+});
+
+var app = builder.Build();
+app.UseCors("AllowAllOrigins");
+```
+
+REACT:
+
+```jsx
+npm create vite
+npm i
+npm run dev
+```
+
+ANGULAR:
 
 ```jsx
 npm install -g @angular/cli
@@ -60,29 +86,7 @@ export class PersonService {
 }
 ```
 
-BE
-
-```jsx
-builder.Services.AddDbContext <
-	AppDbContext >
-	((o) => o.UseSqlServer(builder.Configuration.GetConnectionString("default")));
-builder.Services.AddCors((opt) => {
-	opt.AddPolicy("AllowAllOrigins", (builder) => {
-		builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-	});
-});
-
-var app = builder.Build();
-app.UseCors("AllowAllOrigins");
-```
-
 # React
-
-```jsx
-npm create vite
-npm i
-npm run dev
-```
 
 ```jsx
 useEffect(() => {
@@ -135,8 +139,4 @@ export const Add = ({ close, handleAdd }: Props) => {
 		let newState: AddPersonState = { ...person, normal: e.target.value };
 		setPerson(newState);
 	};
-```
-
-```jsx
-
 ```
