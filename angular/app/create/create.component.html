@@ -1,0 +1,10 @@
+<form (ngSubmit)="submit()">
+    <input [(ngModel)]="person.name" placeholder="name" name="name">
+    <input [(ngModel)]="person.age" placeholder="age" name="age">
+    <select [(ngModel)]="person.normal" name="normal">
+        <option selected [value]="true">Yes</option>
+        <option [value]="false">No</option>
+    </select>
+    <button type="submit">Zatwierdź</button>
+    <button type="button" (click)="hide()">Zamknij</button>
+</form>
